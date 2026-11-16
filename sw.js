@@ -1,4 +1,4 @@
-const CACHE='ics-study-group-pwa-v5';
+const CACHE='ics-study-group-pwa-v6';
 const FILES=['./','./index.html','./manifest.json','./icon.svg','./sitemap.xml','./robots.txt'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)));self.skipWaiting()});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim()});
