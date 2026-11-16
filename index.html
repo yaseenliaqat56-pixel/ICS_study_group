@@ -6,6 +6,7 @@
 <link rel="manifest" href="./manifest.json"><link rel="icon" href="./icon.svg" type="image/svg+xml"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ICS Study Group">
 <title>ICS Study Group</title>
 <style>
+.install-btn{background:#d9f3ec;color:#102a43;border:0;border-radius:12px;padding:10px 14px;font-weight:bold;cursor:pointer;margin-top:14px}.install-help{font-size:12px;color:var(--muted);margin-top:8px}
 :root{--navy:#102a43;--blue:#176b87;--paper:#f4f7fb;--ink:#172b4d;--muted:#62748a}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
 header{background:linear-gradient(135deg,#102a43,#176b87);color:white;padding:24px 18px 38px;border-radius:0 0 26px 26px}
@@ -26,6 +27,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}[hidden]
 <section id="loginScreen" class="auth wrap">
  <div class="panel">
   <div class="brand"><div class="logo">ICS</div><div><strong>ICS Study Group</strong><div class="muted">علم، محنت، کامیابی</div></div></div>
+  <button class="install-btn" id="installLogin" type="button">⬇ ایپ انسٹال کریں</button><p class="install-help" id="installHelpLogin">موبائل یا کمپیوٹر میں ایپ شامل کرنے کے لیے یہاں دبائیں۔</p>
   <h1 id="authTitle">اسٹڈی گروپ میں داخل ہوں</h1>
   <p class="muted">اپنا نام اور PIN درج کریں۔ پہلی مرتبہ آنے والے طالب علم نیا اکاؤنٹ بنا سکتے ہیں۔</p>
   <form id="authForm">
@@ -39,7 +41,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}[hidden]
  </div>
 </section>
 <div id="app" hidden>
-<header><div class="wrap"><div class="topline"><div class="brand"><div class="logo">ICS</div><div><strong>ICS Study Group</strong><div style="font-size:12px;color:#d8e8f1">علم، محنت، کامیابی</div></div></div><button class="btn" id="logout">لاگ آؤٹ</button></div><h1>ہمارا اسٹڈی گروپ</h1><p>خوش آمدید، <strong id="welcomeName"></strong>!</p><span class="pill">مطالعہ کا وقت: 3:00 PM — 7:00 PM</span></div></header>
+<header><div class="wrap"><div class="topline"><div class="brand"><div class="logo">ICS</div><div><strong>ICS Study Group</strong><div style="font-size:12px;color:#d8e8f1">علم، محنت، کامیابی</div></div></div><div><button class="install-btn" id="installApp" type="button">⬇ ایپ انسٹال کریں</button> <button class="btn" id="logout">لاگ آؤٹ</button></div></div><h1>ہمارا اسٹڈی گروپ</h1><p>خوش آمدید، <strong id="welcomeName"></strong>!</p><span class="pill">مطالعہ کا وقت: 3:00 PM — 7:00 PM</span></div></header>
 <main class="wrap">
 <nav class="tabs"><button class="active" data-tab="home">ہوم</button><button data-tab="timetable">ٹائم ٹیبل</button><button data-tab="subjects">مضامین</button><button data-tab="attendance">حاضری</button></nav>
 <section id="home" class="panel"><h2>خوش آمدید!</h2><p>یہ آپ کے ICS اسٹڈی گروپ کا مرکزی صفحہ ہے۔ روزانہ کا شیڈول دیکھیں اور اپنی حاضری درج کریں۔</p><div class="grid"><div class="subject">⏰ 4 گھنٹے<small>روزانہ مطالعہ</small></div><div class="subject">📚 7 مضامین<small>فرسٹ ایئر ICS</small></div><div class="subject">🎯 مستقل مزاجی<small>روزانہ تھوڑی پیش رفت</small></div></div></section>
@@ -52,7 +54,11 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}[hidden]
 </div>
 <script>
 const $=id=>document.getElementById(id), usersKey='ics-local-users-v1', sessionKey='ics-local-session-v1';
-let creating=false, currentUser='';
+let creating=false, currentUser='', installPrompt=null;
+function installHelp(){const text='انسٹال کرنے کے لیے براؤزر کے مینو (⋮) میں جا کر “Install app” یا “Add to Home screen” منتخب کریں۔';$('installHelpLogin').textContent=text;}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;});
+async function installApp(){if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;return;}if(window.matchMedia('(display-mode: standalone)').matches){alert('ایپ پہلے ہی انسٹال ہے۔');return;}alert('اس براؤزر کے مینو (⋮) میں جائیں اور “Install app” یا “Add to Home screen” منتخب کریں۔ iPhone پر Share بٹن سے “Add to Home Screen” منتخب کریں۔');}
+$('installLogin').addEventListener('click',installApp);$('installApp').addEventListener('click',installApp);
 function getUsers(){try{return JSON.parse(localStorage.getItem(usersKey)||'[]')}catch{return []}}
 async function hashPin(pin){const bytes=new TextEncoder().encode(pin);const digest=await crypto.subtle.digest('SHA-256',bytes);return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('')}
 function message(t){$('authMessage').textContent=t}
