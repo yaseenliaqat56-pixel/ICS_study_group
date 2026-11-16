@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "ICS Study Group",
+  "short_name": "ICS Group",
+  "description": "فرسٹ ایئر ICS طلبہ کے لیے اسٹڈی گروپ",
+  "lang": "ur",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#102a43",
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
