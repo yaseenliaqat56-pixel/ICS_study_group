@@ -64,7 +64,7 @@ tagline:'علم · محنت · کامیابی',install:'⬇ ایپ انسٹال 
 function setLanguage(lang){
  language=lang;const u=lang==='ur',w=words[lang];document.documentElement.lang=lang;document.documentElement.dir=u?'rtl':'ltr';document.body.style.fontFamily=u?'Tahoma,Arial,sans-serif':'Arial,sans-serif';
  const put=(id,key)=>{const el=$(id);if(el)el.textContent=w[key]};
- put('installLogin','install');put('installApp','install');put('installHelpLogin','installHelp');put('authTitle',creating?'createTitle':'signIn');put('authSubmit',creating?'createButton':'enter');put('toggleAuth',creating?'loginPrompt':'createPrompt');put('authMessage','');put('logout','logout');put('welcomeName',''); 
+ put('installLogin','install');put('installApp','install');put('installHelpLogin','installHelp');put('authTitle',creating?'createTitle':'signIn');put('authSubmit',creating?'createButton':'enter');put('toggleAuth',creating?'loginPrompt':'createPrompt');put('authMessage','');put('logout','logout'); 
  const brand=document.querySelectorAll('.brand .muted');if(brand[0])brand[0].textContent=w.tagline;if(brand[1])brand[1].textContent=w.tagline;
  const loginIntro=document.querySelector('#loginScreen .panel > p.muted');if(loginIntro)loginIntro.textContent=w.loginIntro;
  document.querySelector('label[for="loginName"]').textContent=w.studentName;$('loginName').placeholder=w.namePlaceholder;document.querySelector('label[for="loginPin"]').textContent=w.pinLabel;$('loginPin').placeholder=w.pinPlaceholder;
