@@ -1,80 +1,78 @@
 <!doctype html>
-<html lang="ur" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#102a43"><meta name="description" content="فرسٹ ایئر ICS طلبہ کے لیے اسٹڈی گروپ">
-<link rel="manifest" href="./manifest.json"><link rel="icon" href="./icon.svg" type="image/svg+xml"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ICS Study Group">
+<meta name="theme-color" content="#102a43"><meta name="description" content="ICS Study Group for First Year students">
+<link rel="manifest" href="./manifest.json"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ICS Study Group">
 <title>ICS Study Group</title>
 <style>
-.install-btn{background:#d9f3ec;color:#102a43;border:0;border-radius:12px;padding:10px 14px;font-weight:bold;cursor:pointer;margin-top:14px}.install-help{font-size:12px;color:var(--muted);margin-top:8px}
 :root{--navy:#102a43;--blue:#176b87;--paper:#f4f7fb;--ink:#172b4d;--muted:#62748a}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif;line-height:1.6}
 header{background:linear-gradient(135deg,#102a43,#176b87);color:white;padding:24px 18px 38px;border-radius:0 0 26px 26px}
 .wrap{max-width:900px;margin:auto;padding:0 16px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:15px;background:#d9f3ec;color:#102a43;display:grid;place-items:center;font-weight:bold;font-size:19px}
 h1{font-size:26px;margin:10px 0 3px}header p{margin:0;color:#d8e8f1}.pill{display:inline-block;background:#ffffff20;border:1px solid #ffffff50;border-radius:20px;padding:3px 12px;font-size:13px;margin-top:12px}
 main{margin-top:-18px}.tabs{display:flex;gap:8px;overflow:auto;padding:8px 0 14px}.tabs button,.btn{border:0;border-radius:12px;padding:10px 15px;background:white;color:var(--navy);font-weight:bold;cursor:pointer;white-space:nowrap}.tabs button.active,.btn.primary{background:var(--blue);color:white}
 .panel{background:white;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 5px 22px #18334d0b}.panel h2{font-size:19px;margin:0 0 12px}.muted{color:var(--muted);font-size:13px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.subject{background:#f3f8fa;border:1px solid #e3edf1;border-radius:13px;padding:13px;font-weight:bold}.subject small{display:block;color:var(--muted);font-weight:normal}
-table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:right;padding:10px 7px;border-bottom:1px solid #edf1f5}th{color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:10px 7px;border-bottom:1px solid #edf1f5}th{color:var(--muted)}
 input,select{width:100%;padding:11px;border:1px solid #d7e1ea;border-radius:10px;font:inherit;margin:5px 0 12px}label{font-weight:bold;font-size:14px}
 .notice{background:#fff8e7;border:1px solid #f3dfaa;padding:12px;border-radius:12px;font-size:13px;color:#72551b;margin:12px 0}
 .attrow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #edf1f5}
 .topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .auth{max-width:440px;margin:34px auto 24px}.auth .panel{padding:22px}.linkbtn{background:none;border:0;color:var(--blue);font:inherit;text-decoration:underline;cursor:pointer;padding:8px}
+.install-btn{background:#d9f3ec;color:#102a43;border:0;border-radius:12px;padding:10px 14px;font-weight:bold;cursor:pointer;margin-top:14px}.install-help{font-size:12px;color:var(--muted);margin-top:8px}
 footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}[hidden]{display:none!important}
 </style></head>
 <body>
-<section id="loginScreen" class="auth wrap">
- <div class="panel">
-  <div class="brand"><div class="logo">ICS</div><div><strong>ICS Study Group</strong><div class="muted">علم، محنت، کامیابی</div></div></div>
-  <button class="install-btn" id="installLogin" type="button">⬇ ایپ انسٹال کریں</button><p class="install-help" id="installHelpLogin">موبائل یا کمپیوٹر میں ایپ شامل کرنے کے لیے یہاں دبائیں۔</p>
-  <h1 id="authTitle">اسٹڈی گروپ میں داخل ہوں</h1>
-  <p class="muted">اپنا نام اور PIN درج کریں۔ پہلی مرتبہ آنے والے طالب علم نیا اکاؤنٹ بنا سکتے ہیں۔</p>
-  <form id="authForm">
-   <label for="loginName">طالب علم کا نام</label><input id="loginName" maxlength="40" autocomplete="username" required placeholder="اپنا نام لکھیں">
-   <label for="loginPin">PIN (کم از کم 4 ہندسے)</label><input id="loginPin" type="password" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" autocomplete="current-password" required placeholder="4 سے 8 ہندسے">
-   <button class="btn primary" id="authSubmit" type="submit">Enter</button>
-  </form>
-  <button class="linkbtn" id="toggleAuth" type="button">پہلی مرتبہ؟ نیا اکاؤنٹ بنائیں</button>
-  <p id="authMessage" class="muted" role="status"></p>
-  <div class="notice">یہ ابتدائی ورژن اکاؤنٹ اسی ڈیوائس اور اسی براؤزر میں محفوظ کرتا ہے۔ PIN یا اکاؤنٹ دوسرے فون/کمپیوٹر پر منتقل نہیں ہوتا۔</div>
- </div>
-</section>
+<section id="loginScreen" class="auth wrap"><div class="panel">
+<div class="brand"><div class="logo">ICS</div><div><strong>ICS Study Group</strong><div class="muted">Learn · Work Hard · Succeed</div></div></div>
+<button class="install-btn" id="installLogin" type="button">⬇ Install App</button><p class="install-help" id="installHelpLogin">Install this app on your phone or computer.</p>
+<h1 id="authTitle">Sign in to the Study Group</h1><p class="muted">Enter your name and PIN. New students can create an account.</p>
+<form id="authForm"><label for="loginName">Student Name</label><input id="loginName" maxlength="40" autocomplete="username" required placeholder="Enter your name">
+<label for="loginPin">PIN (4 to 8 digits)</label><input id="loginPin" type="password" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" autocomplete="current-password" required placeholder="Enter your PIN">
+<button class="btn primary" id="authSubmit" type="submit">Enter</button></form>
+<button class="linkbtn" id="toggleAuth" type="button">First time here? Create an account</button><p id="authMessage" class="muted" role="status"></p>
+<div class="notice">This basic version saves accounts only in this device's browser. Your account and PIN will not transfer to another phone or computer.</div>
+</div></section>
 <div id="app" hidden>
-<header><div class="wrap"><div class="topline"><div class="brand"><div class="logo">ICS</div><div><strong>ICS Study Group</strong><div style="font-size:12px;color:#d8e8f1">علم، محنت، کامیابی</div></div></div><div><button class="install-btn" id="installApp" type="button">⬇ ایپ انسٹال کریں</button> <button class="btn" id="logout">لاگ آؤٹ</button></div></div><h1>ہمارا اسٹڈی گروپ</h1><p>خوش آمدید، <strong id="welcomeName"></strong>!</p><span class="pill">مطالعہ کا وقت: 3:00 PM — 7:00 PM</span></div></header>
+<header><div class="wrap"><div class="topline"><div class="brand"><div class="logo">ICS</div><div><strong>ICS Study Group</strong><div style="font-size:12px;color:#d8e8f1">Learn · Work Hard · Succeed</div></div></div>
+<div><button class="install-btn" id="installApp" type="button">⬇ Install App</button> <button class="btn" id="logout">Log Out</button></div></div>
+<h1>Welcome to Our Study Group</h1><p>Welcome, <strong id="welcomeName"></strong>!</p><span class="pill">Study Time: 3:00 PM — 7:00 PM</span></div></header>
 <main class="wrap">
-<nav class="tabs"><button class="active" data-tab="home">ہوم</button><button data-tab="timetable">ٹائم ٹیبل</button><button data-tab="subjects">مضامین</button><button data-tab="attendance">حاضری</button></nav>
-<section id="home" class="panel"><h2>خوش آمدید!</h2><p>یہ آپ کے ICS اسٹڈی گروپ کا مرکزی صفحہ ہے۔ روزانہ کا شیڈول دیکھیں اور اپنی حاضری درج کریں۔</p><div class="grid"><div class="subject">⏰ 4 گھنٹے<small>روزانہ مطالعہ</small></div><div class="subject">📚 7 مضامین<small>فرسٹ ایئر ICS</small></div><div class="subject">🎯 مستقل مزاجی<small>روزانہ تھوڑی پیش رفت</small></div></div></section>
-<section id="timetable" class="panel" hidden><h2>روزانہ کا ٹائم ٹیبل</h2><table><thead><tr><th>وقت</th><th>سرگرمی</th></tr></thead><tbody>
-<tr><td>3:00 – 4:00</td><td>ریاضی</td></tr><tr><td>4:00 – 5:00</td><td>فزکس</td></tr><tr><td>5:00 – 5:15</td><td>وقفہ / نماز (نماز کے اصل وقت کے مطابق)</td></tr><tr><td>5:15 – 6:15</td><td>کمپیوٹر سائنس</td></tr><tr><td>6:15 – 7:00</td><td>انگلش / اردو / اسلامیات / ترجمۃ القرآن — باری باری</td></tr>
-</tbody></table><p class="muted">نماز کے اوقات اپنے مقامی اوقات کے مطابق رکھیں۔</p></section>
-<section id="subjects" class="panel" hidden><h2>ہمارے مضامین</h2><div class="grid"><div class="subject">ریاضی<small>Mathematics</small></div><div class="subject">فزکس<small>Physics</small></div><div class="subject">انگلش<small>English</small></div><div class="subject">اردو<small>Urdu</small></div><div class="subject">کمپیوٹر سائنس<small>Computer Science</small></div><div class="subject">اسلامیات<small>Islamiyat</small></div><div class="subject">ترجمۃ القرآن<small>Tarjuma-tul-Quran</small></div></div></section>
-<section id="attendance" class="panel" hidden><h2>حاضری درج کریں</h2><div class="notice">حاضری بھی فی الحال صرف اسی ڈیوائس کے براؤزر میں محفوظ ہوتی ہے؛ تمام دوستوں کے درمیان مشترکہ نہیں۔</div><form id="attForm"><label for="day">تاریخ</label><input id="day" type="date" required><label for="status">حاضری</label><select id="status"><option value="حاضر">حاضر</option><option value="غیر حاضر">غیر حاضر</option><option value="چھٹی">چھٹی</option></select><button class="btn primary" type="submit">حاضری محفوظ کریں</button></form><h2 style="margin-top:20px">آپ کی حاضری</h2><div id="records" class="muted">ابھی کوئی حاضری درج نہیں ہوئی۔</div></section>
-</main><footer>ICS Study Group · طلبہ کے باہمی مطالعے کے لیے</footer>
-</div>
+<nav class="tabs"><button class="active" data-tab="home">Home</button><button data-tab="timetable">Timetable</button><button data-tab="subjects">Subjects</button><button data-tab="attendance">Attendance</button></nav>
+<section id="home" class="panel"><h2>Welcome!</h2><p>This is the main page of your ICS Study Group. Check the daily schedule, subjects, and mark your attendance.</p><div class="grid">
+<div class="subject">⏰ 4 Hours<small>Daily Study Time</small></div><div class="subject">📚 7 Subjects<small>First Year ICS</small></div><div class="subject">🎯 Stay Consistent<small>Make progress every day</small></div></div></section>
+<section id="timetable" class="panel" hidden><h2>Daily Timetable</h2><table><thead><tr><th>Time</th><th>Activity</th></tr></thead><tbody>
+<tr><td>3:00 – 4:00</td><td>Mathematics</td></tr><tr><td>4:00 – 5:00</td><td>Physics</td></tr><tr><td>5:00 – 5:15</td><td>Break / Prayer (according to local prayer times)</td></tr><tr><td>5:15 – 6:15</td><td>Computer Science</td></tr><tr><td>6:15 – 7:00</td><td>English / Urdu / Islamiyat / Tarjuma-tul-Quran — rotating</td></tr>
+</tbody></table><p class="muted">Adjust the prayer break according to your local prayer schedule.</p></section>
+<section id="subjects" class="panel" hidden><h2>Our Subjects</h2><div class="grid">
+<div class="subject">Mathematics</div><div class="subject">Physics</div><div class="subject">English</div><div class="subject">Urdu</div><div class="subject">Computer Science</div><div class="subject">Islamiyat</div><div class="subject">Tarjuma-tul-Quran</div></div></section>
+<section id="attendance" class="panel" hidden><h2>Mark Attendance</h2><div class="notice">Attendance is currently saved only in this device's browser. It is not shared with other students.</div>
+<form id="attForm"><label for="day">Date</label><input id="day" type="date" required><label for="status">Attendance Status</label><select id="status"><option value="Present">Present</option><option value="Absent">Absent</option><option value="Leave">Leave</option></select><button class="btn primary" type="submit">Save Attendance</button></form>
+<h2 style="margin-top:20px">Your Attendance Records</h2><div id="records" class="muted">No attendance records yet.</div></section>
+</main><footer>ICS Study Group · For student learning and collaboration</footer></div>
 <script>
-const $=id=>document.getElementById(id), usersKey='ics-local-users-v1', sessionKey='ics-local-session-v1';
-let creating=false, currentUser='', installPrompt=null;
-function installHelp(){const text='انسٹال کرنے کے لیے براؤزر کے مینو (⋮) میں جا کر “Install app” یا “Add to Home screen” منتخب کریں۔';$('installHelpLogin').textContent=text;}
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;});
-async function installApp(){if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;return;}if(window.matchMedia('(display-mode: standalone)').matches){alert('ایپ پہلے ہی انسٹال ہے۔');return;}alert('اس براؤزر کے مینو (⋮) میں جائیں اور “Install app” یا “Add to Home screen” منتخب کریں۔ iPhone پر Share بٹن سے “Add to Home Screen” منتخب کریں۔');}
+const $=id=>document.getElementById(id),usersKey='ics-local-users-v1',sessionKey='ics-local-session-v1';let creating=false,currentUser='',installPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e});
+async function installApp(){if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;return}if(window.matchMedia('(display-mode: standalone)').matches){alert('The app is already installed.');return}alert('Open your browser menu (⋮) and choose “Install app” or “Add to Home screen”. On iPhone, use Share → Add to Home Screen.')}
 $('installLogin').addEventListener('click',installApp);$('installApp').addEventListener('click',installApp);
 function getUsers(){try{return JSON.parse(localStorage.getItem(usersKey)||'[]')}catch{return []}}
-async function hashPin(pin){const bytes=new TextEncoder().encode(pin);const digest=await crypto.subtle.digest('SHA-256',bytes);return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('')}
+async function hashPin(pin){const bytes=new TextEncoder().encode(pin),digest=await crypto.subtle.digest('SHA-256',bytes);return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('')}
 function message(t){$('authMessage').textContent=t}
-$('toggleAuth').addEventListener('click',()=>{creating=!creating;$('authTitle').textContent=creating?'نیا اکاؤنٹ بنائیں':'اسٹڈی گروپ میں داخل ہوں';$('authSubmit').textContent=creating?'اکاؤنٹ بنائیں':'Enter';$('toggleAuth').textContent=creating?'پہلے سے اکاؤنٹ ہے؟ لاگ اِن کریں':'پہلی مرتبہ؟ نیا اکاؤنٹ بنائیں';$('loginPin').autocomplete=creating?'new-password':'current-password';message('')});
-$('authForm').addEventListener('submit',async e=>{e.preventDefault();const name=$('loginName').value.trim(),pin=$('loginPin').value;if(!name||!/^[0-9]{4,8}$/.test(pin)){message('نام اور 4 سے 8 ہندسوں کا PIN درج کریں۔');return}const users=getUsers(), normalized=name.toLocaleLowerCase('ur');const found=users.find(u=>u.name.toLocaleLowerCase('ur')===normalized);const hash=await hashPin(pin);
-if(creating){if(found){message('اس نام کا اکاؤنٹ پہلے سے موجود ہے۔ لاگ اِن کریں۔');return}users.push({name,hash});localStorage.setItem(usersKey,JSON.stringify(users));message('اکاؤنٹ بن گیا۔ اب داخل ہو رہے ہیں۔')}
-else if(!found||found.hash!==hash){message('نام یا PIN درست نہیں۔ اگر پہلی مرتبہ ہیں تو نیا اکاؤنٹ بنائیں۔');return}
-currentUser=creating?name:found.name;localStorage.setItem(sessionKey,currentUser);enterApp();});
+$('toggleAuth').addEventListener('click',()=>{creating=!creating;$('authTitle').textContent=creating?'Create a New Account':'Sign in to the Study Group';$('authSubmit').textContent=creating?'Create Account':'Enter';$('toggleAuth').textContent=creating?'Already have an account? Sign in':'First time here? Create an account';$('loginPin').autocomplete=creating?'new-password':'current-password';message('')});
+$('authForm').addEventListener('submit',async e=>{e.preventDefault();const name=$('loginName').value.trim(),pin=$('loginPin').value;if(!name||!/^[0-9]{4,8}$/.test(pin)){message('Enter your name and a PIN containing 4 to 8 digits.');return}
+const users=getUsers(),normalized=name.toLocaleLowerCase(),found=users.find(u=>u.name.toLocaleLowerCase()===normalized),hash=await hashPin(pin);
+if(creating){if(found){message('An account with this name already exists. Please sign in.');return}users.push({name,hash});localStorage.setItem(usersKey,JSON.stringify(users));message('Account created. Signing you in...')}
+else if(!found||found.hash!==hash){message('Incorrect name or PIN. If this is your first visit, create an account.');return}
+currentUser=creating?name:found.name;localStorage.setItem(sessionKey,currentUser);enterApp()});
 function enterApp(){currentUser=localStorage.getItem(sessionKey)||currentUser;if(!currentUser)return;$('loginScreen').hidden=true;$('app').hidden=false;$('welcomeName').textContent=currentUser;$('day').value=new Date().toISOString().slice(0,10);renderAttendance()}
-$('logout').addEventListener('click',()=>{localStorage.removeItem(sessionKey);currentUser='';$('app').hidden=true;$('loginScreen').hidden=false;$('loginPin').value='';message('آپ لاگ آؤٹ ہو گئے ہیں۔')});
+$('logout').addEventListener('click',()=>{localStorage.removeItem(sessionKey);currentUser='';$('app').hidden=true;$('loginScreen').hidden=false;$('loginPin').value='';message('You have logged out.')});
 const tabs=[...document.querySelectorAll('[data-tab]')];tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('#app main section').forEach(s=>s.hidden=s.id!==b.dataset.tab)}));
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function attendanceKey(){return 'ics-attendance-'+currentUser.toLocaleLowerCase('ur')}
-function renderAttendance(){let a=JSON.parse(localStorage.getItem(attendanceKey())||'[]');$('records').innerHTML=a.length?a.slice().reverse().map(x=>'<div class="attrow"><span>'+escapeHtml(x.date)+'</span><strong>'+x.status+'</strong></div>').join(''):'ابھی کوئی حاضری درج نہیں ہوئی۔'}
+function attendanceKey(){return 'ics-attendance-'+currentUser.toLocaleLowerCase()}
+function renderAttendance(){let a=JSON.parse(localStorage.getItem(attendanceKey())||'[]');$('records').innerHTML=a.length?a.slice().reverse().map(x=>'<div class="attrow"><span>'+escapeHtml(x.date)+'</span><strong>'+x.status+'</strong></div>').join(''):'No attendance records yet.'}
 $('attForm').addEventListener('submit',e=>{e.preventDefault();let a=JSON.parse(localStorage.getItem(attendanceKey())||'[]');a.push({date:$('day').value,status:$('status').value});localStorage.setItem(attendanceKey(),JSON.stringify(a));renderAttendance()});
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 if(localStorage.getItem(sessionKey)){enterApp()}
-</script>
-</body></html>
+</script></body></html>
