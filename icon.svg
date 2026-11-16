@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#102a43"/><rect x="52" y="52" width="408" height="408" rx="84" fill="#d9f3ec"/><text x="256" y="315" font-family="Arial,sans-serif" font-size="150" font-weight="700" text-anchor="middle" fill="#102a43">ICS</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1a8"/><stop offset=".35" stop-color="#d69b28"/><stop offset=".62" stop-color="#fff0a0"/><stop offset="1" stop-color="#a66a10"/></linearGradient>
+ <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#003b28"/><stop offset=".55" stop-color="#00180f"/><stop offset="1" stop-color="#00523a"/></linearGradient>
+ <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#aeb7c0"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="512" height="512" rx="78" fill="#070907"/>
+<rect x="14" y="14" width="484" height="484" rx="74" fill="url(#green)" stroke="url(#gold)" stroke-width="11"/>
+<rect x="27" y="27" width="458" height="458" rx="65" fill="none" stroke="#f8d77b" stroke-width="2"/>
+<path d="M150 122 256 76 362 122 256 164Z" fill="#101820" stroke="url(#gold)" stroke-width="5"/>
+<path d="M256 77v87" stroke="#d9a83c" stroke-width="3"/>
+<path d="M362 122v61" stroke="url(#gold)" stroke-width="5"/><circle cx="362" cy="186" r="7" fill="#ffe49a"/>
+<path d="M349 193h26l-13 48Z" fill="url(#gold)"/>
+<path d="M126 214Q190 195 256 245Q322 195 386 214L256 273Z" fill="#111b1b" stroke="url(#gold)" stroke-width="5"/>
+<path d="M140 220Q207 210 256 257Q305 210 372 220" fill="none" stroke="#ffe28a" stroke-width="9"/>
+<text x="256" y="360" font-family="Arial,sans-serif" font-size="126" font-weight="900" text-anchor="middle" fill="url(#silver)" stroke="#fff" stroke-width="1">ICS</text>
+<path d="M76 354Q252 310 438 343Q283 353 105 388Z" fill="url(#gold)"/>
+<text x="256" y="421" font-family="Arial,sans-serif" font-size="42" font-weight="700" text-anchor="middle" fill="url(#gold)">Study Group</text>
+<text x="256" y="456" font-family="Arial,sans-serif" font-size="15" letter-spacing="4" text-anchor="middle" fill="#fff4ce">LEARN • PREPARE • ACHIEVE</text>
+</svg>
