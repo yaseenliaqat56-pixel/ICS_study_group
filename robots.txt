@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yaseenliaqat56-pixel.github.io/ICS_study_group/sitemap.xml
