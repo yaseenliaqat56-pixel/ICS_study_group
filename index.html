@@ -120,6 +120,10 @@ function renderMonthly(){
  $('monthlySummary').innerHTML='<p><strong>Overall attendance: '+overall+'%</strong> ('+attended+' present out of '+total+' marked classes)</p><table><thead><tr><th>Subject</th><th>Present</th><th>Absent</th><th>Leave</th><th>Percentage</th></tr></thead><tbody>'+rows+'</tbody></table>';
 }
 $('day').addEventListener('change',renderAttendance);$('month').addEventListener('change',renderMonthly);
-if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+if('serviceWorker'in navigator){
+ let reloadedForUpdate=false;
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!reloadedForUpdate){reloadedForUpdate=true;window.location.reload()}});
+ window.addEventListener('load',async()=>{try{const reg=await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await reg.update()}catch(e){}});
+}
 if(localStorage.getItem(sessionKey)){enterApp()}
 </script></body></html>
